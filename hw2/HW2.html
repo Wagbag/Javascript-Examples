@@ -1,0 +1,50 @@
+<head>
+
+<script type="text/javascript" src="dragon.js"></script>
+<script type="text/javascript" src="LineTests.js"></script>
+<script type="text/javascript" src="Canvas.js"></script>
+
+</head>
+
+<body>
+<script>
+   var width = 500;
+   var height = 500;
+
+   canvas = new Canvas(width,height);
+   canvas.Clear();
+   LineTest(canvas);
+   canvas.Redisplay();
+
+function DoDisplay(value) {
+   canvas.Clear();
+   switch (value) {
+      case '0':
+         LineTest(canvas); 
+	 break;
+      case '1':
+         DrawIt(canvas);
+	 break;
+      case '2':
+         Circle(canvas);
+	 break;
+      case '3':
+         Dragon(canvas);
+	 break;
+      default:
+   }
+   canvas.Redisplay();
+   return;
+}
+
+
+</script>
+<p>
+<select onchange="DoDisplay(this.value)">
+    <option value="0">Line Test</option>
+    <option value="1">Data Test</option>
+    <option value="2">Circle</option>
+    <option value="3">Dragon</option>
+</select>
+
+</body>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<script type="text/javascript" src="canvasTools.js"></script>
+<meta charset="utf-8">
+<title>Homework1</title>
+</head>
+
+<body>
+<h1>Jacob's Badass Fractal Generator</h1>
+<p> Warning: Larger numbers will take more time. </p>
+
+<script>
+var WIDTH = 600;
+var HEIGHT = 600;
+
+var ctx = new MyCanvas(WIDTH, HEIGHT);
+var walk=new WalkObj(ctx);
+var pos= new Position();
+
+
+
+ctx.SetClearColor("white");
+walk.StartPoint(ctx,pos);
+
+</script>
+
+
+<p>
+
+Background Color:
+<select id="BGColor" onchange="ctx.SetClearColor(this.value)">
+    <option value="white">white</option>
+    <option value="black">black</option>
+</select>
+
+Dot Color:
+<select id="dColor" onchange="ctx.SetPointColor(this.value)">
+    <option value="black">black</option>
+    <option value="red">red</option>
+    <option value="blue">blue</option>
+    <option value="green">green</option>
+</select>
+</p>
+
+<p>
+Max Points:
+<input
+      type="text" 
+      name="Max Points"
+      maxLength = "5"
+      size = "5"
+      id="MaxPoints", onchange="ctx.SetMaxPoints('MaxPoints')">
+Max Steps:
+<input
+      type="text" 
+      name="Max Steps"
+      maxLength = "6"
+      size = "6"
+      id="MaxSteps", onchange="walk.SetMaxSteps('MaxSteps')">
+</p>
+
+<p>
+<button type="button" id="Gen Frac" onclick="ctx.Compute(walk,pos)">Generate Fractal</button>
+</p>
+
+</body>
+
+
+<!-- So...I had a few issues going through this. A lot of it was me forgetting basic logic for if statements and  -->
+<!-- not having bounds checks. Once I did that, my issues dwindled. -->
+<!-- I had some issues with how you were recommending we went about our math. -->
+<!-- First: I had no clue how to implement the 75% of the radius thing. It broke my program every time I tried it. -->
+<!-- it works great without it so whatever, right? No big deal -->
+<!-- Second major issue: When I got theta using / Math.Random()*360 / I guess I was suppose to convert it by -->
+<!-- multiplying by pi and dividing by 180. Well..that also totally ****** my fractual generation. -->
+<!-- I have the code still there that did it but commented out if you would like to see what I mean -->
+<!-- Once it was removed the generator worked without a single issue. Again, I DONT EVEN KNOW. -->
+
+<!-- I don't know how interesting making multiple objects is but that made this program go so much smoother -->
+<!-- I've seen people throwing EVERYTHING into a single object. BARF!! BARF!! BARF!! :(    -->
+<!-- I did enjoy how I checked surrounding points for a neighbor. That was interesting to me. -->
+
+<!-- I used http://www.w3schools.com/ to get a lot of my referencing material along with the code from your notes -->
+
+<!-- I didn't collaberate with anyone but Aarron has code that is similar to mine at some place in his program -->
+<!-- He needed help figuring out calculations or something -->
+
+
+
+</html>
